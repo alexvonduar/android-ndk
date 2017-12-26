@@ -2,20 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion = 26
-    buildToolsVersion = 26
 
     defaultConfig {
         applicationId = 'com.example.widecolor'
         minSdkVersion   26
         targetSdkVersion  26
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a'
-        }
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_PLATFORM=android-26',
-                          '-DANDROID_TOOLCHAIN=clang',
-                          '-DANDROID_STL=c++_static'
+                arguments '-DANDROID_STL=c++_static'
             }
         }
     }
@@ -23,7 +17,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+                          'proguard-rules.pro'
         }
     }
     externalNativeBuild {
@@ -54,5 +48,5 @@ for (int i = 0; i < TARGET_DIR.size(); i++) {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
 }
